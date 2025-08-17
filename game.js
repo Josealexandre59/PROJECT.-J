@@ -1,15 +1,17 @@
-const canvas = document.getElementById("game");
+// Aqui vou começar fazendo a conexão do javascript com o html.
+
+const canvas = document.getElementById("game"); 
 const ctx = canvas.getContext("2d");
 const placarEl = document.getElementById("placar");
 
-// Estado inicial
+// Estado inicial do jogo
 const estadoInicial = {
   bola: { x: 250, y: 460, r: 15, vy: 0, lancada: false },
   cesta: { x: 200, y: 50, w: 100, h: 10 },
   pontos: 0
 };
 
-// Função pura: desenhar o jogo
+// Função para desenhar o jogo
 const desenhar = (ctx, estado) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -68,7 +70,7 @@ const lancar = (estado) => {
   if (!estado.bola.lancada) {
     return {
       ...estado,
-      bola: { ...estado.bola, vy: -1, lancada: true }
+      bola: { ...estado.bola, vy: -15, lancada: true }
     };
   }
   return estado;
