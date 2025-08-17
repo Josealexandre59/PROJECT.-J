@@ -13,7 +13,7 @@ const estadoInicial = {
 const desenhar = (ctx, estado) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Cesta
+  // Aqui fiz a cesta no jogo. 
   ctx.fillStyle = "blue";
   ctx.fillRect(estado.cesta.x, estado.cesta.y, estado.cesta.w, estado.cesta.h);
 
