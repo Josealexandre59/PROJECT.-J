@@ -1,6 +1,4 @@
-// Aqui vou começar fazendo a conexão do javascript com o html.
-
-const canvas = document.getElementById("game"); 
+const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const placarEl = document.getElementById("placar");
 
