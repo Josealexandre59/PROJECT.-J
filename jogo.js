@@ -1,15 +1,15 @@
-const canvas = document.getElementById("game");
+const canvas = document.getElementById("jogo");
 const ctx = canvas.getContext("2d");
 const placarEl = document.getElementById("placar");
 
-// Estado inicial do jogo
+// A priori 
 const estadoInicial = {
   bola: { x: 250, y: 460, r: 15, vy: 0, lancada: false },
   cesta: { x: 200, y: 50, w: 100, h: 10 },
   pontos: 0
 };
 
-// Função para desenhar o jogo
+// função para desenhar o jogo
 const desenhar = (ctx, estado) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -27,14 +27,14 @@ const desenhar = (ctx, estado) => {
   placarEl.textContent = "Pontos: " + estado.pontos;
 };
 
-// Função pura: atualizar o estado da bola
+// Função pura: atualiza o estado da bola
 const atualizar = (estado) => {
   if (!estado.bola.lancada) return estado;
 
   let novaY = estado.bola.y + estado.bola.vy;
   let novaVy = estado.bola.vy + 0.5; // gravidade
 
-  // Verifica se bola passou pela cesta
+  // verificar se  a bola passou pela cesta
   const dentroCesta =
     estado.bola.x > estado.cesta.x &&
     estado.bola.x < estado.cesta.x + estado.cesta.w &&
@@ -49,7 +49,7 @@ const atualizar = (estado) => {
     };
   }
 
-  // Bola voltou ao chão
+  // A bola voltou pro chão
   if (novaY > 460) {
     return {
       ...estado,
@@ -63,7 +63,7 @@ const atualizar = (estado) => {
   };
 };
 
-// Função pura: lançar a bola
+// Função pura: Deve lançar a bola
 const lancar = (estado) => {
   if (!estado.bola.lancada) {
     return {
@@ -84,7 +84,7 @@ const loop = () => {
 };
 loop();
 
-// Clique → lança a bola
+// clique → lança a bola
 canvas.addEventListener("click", () => {
   estado = lancar(estado);
 });
