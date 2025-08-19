@@ -35,8 +35,8 @@ function atualizar (estado)  {
   const novaVy = estado.bola.vy + 0.5 // indica a gravidade
 }
 
-  //  deveverificar se  a bola passou pela cesta
-  function dentroCesta  = (
+  //  deve verificar se  a bola passou pela cesta
+  function dentroCesta =  (
     estado.bola.x > estado.cesta.x &&
     estado.bola.x < estado.cesta.x + estado.cesta.w &&
     estado.bola.y < estado.cesta.y + estado.cesta.h &&
