@@ -1,40 +1,45 @@
 const canvas = document.getElementById("jogo")
 const contexto = canvas.getContext("2d")
-const placarEl = document.getElementById("placar")
+const placar = document.getElementById("placar")
 
 // ESTADO INICIAL DO JOGO
+
 const estadoInicial = {
   bola: { x: 250, y: 460, raio: 15, velocidade: 0, lancada: false },
   cesta: { x: 200, y: 50, largura: 100, altura: 10 },
   pontos: 0
 }
 
+// FUNÇÃO PARA CRIAR UM OBJETO IMAGEM DA QUADRA
+
+const quadra = new Image();
+  quadra.src = "https://static.vecteezy.com/system/resources/previews/013/750/302/original/basketball-court-design-free-vector.jpg"
+  
 // FUNÇÃO PARA DESENHAR O JOGO
 
 const desenhar = (contexto, estado) => {
-  contexto.clearRect(0, 0, canvas.width, canvas.height)
+  contexto.clearRect(0, 0, canvas.width, canvas.height);
 
-// -------------Cesta de Basquete---------------
+  // -------------Quadra de basquete---------------
+  quadra.onload = () => {
+    contexto.drawImage (quadra, 0, 0, canvas.width, canvas. height)
+  }
 
-// Retângulo que simula a cesta
-
+  // -------------Cesta de Basquete---------------
   contexto.fillStyle = "blue";
-  contexto.fillRect(estado.cesta.x, estado.cesta.y, estado.cesta.largura, estado.cesta.altura)
+  contexto.fillRect(estado.cesta.x, estado.cesta.y, estado.cesta.largura, estado.cesta.altura);
 
-// Borda do retângulo que simula a cesta
+  contexto.lineWidth = 3;
+  contexto.strokeStyle = "red";
+  contexto.strokeRect(201, 51, 100, 10);
 
-  contexto.lineWidth = 3
-  contexto.strokeStyle = "red"
-  contexto.strokeRect (201, 51, 100, 10)
-
-
-// Bola
+  // -------------Bola de basquete---------------
   contexto.beginPath();
-  contexto.arc(estado.bola.x, estado.bola.y, estado.bola.raio, 0, Math.PI * 2);
   contexto.fillStyle = "red";
+  contexto.arc(estado.bola.x, estado.bola.y, estado.bola.raio, 0, Math.PI * 2);
   contexto.fill();
 
-// Placar
+  // Placar
   placar.textContent = "Pontos: " + estado.pontos;
 }
 
